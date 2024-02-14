@@ -1,7 +1,7 @@
 # CholGen Workshop
 Documentation for CholGen 2024 workshop
 
-[Terra workspace]([url](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024))
+[Terra workspace](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024)
 
  - [Workspace setup](workshop/workspace-setup.md)
  - [Bacterial de novo assembly and typing](workshop/theiaprok-illumina.md)
