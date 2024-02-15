@@ -29,9 +29,12 @@ To get started, each particpant will malke a working clone of the workshop works
 ![click-workspaces](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/85add471-359e-4a4a-bd8c-fb56c4280ff4)
 3. Search for the workspace of interest using the Search by keyboard box. “CholGen” (the workspace is also linked [here] (https://publichealth.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024).
 4. The workspace is read-only. You will need to make your own copy that is associated with a billing project you have access to. You can do this by “cloning” the public workspace. Click on the circle with three dots on the upper right side of your workspace. A drop-down menu appears and you can select “Clone”.
-5. ![Screenshot 2024-02-15 at 4 42 29 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/b8dc34e3-1b35-4e99-b515-161f159fef2b)
+
+![Screenshot 2024-02-15 at 4 42 29 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/b8dc34e3-1b35-4e99-b515-161f159fef2b)
+
 6. In the workspace name, replace “copy” with your name. Click “**clone workspace**”.
 ![Screenshot 2024-02-15 at 4 45 51 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/7104473b-96d3-4b5d-8133-ea4c6179cb7f)
+
 **_DO NOT_** select "**Workspace will have protected data**". **_Do not_** select an **Authorization Domain**; doing so will complicate access and sharing of workspace data.
 8. This creates a copy of the original workspace for just you to use. Check that the workspace you are currently working in is your copy. 
 
