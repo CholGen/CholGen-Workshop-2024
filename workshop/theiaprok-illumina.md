@@ -27,6 +27,7 @@ Briefly, the `assemble_denovo` pipeline consists of the following steps:
 5. AMR characterization and species-specific typing and tools
 6. Various QC outputs
 
+![TheiaProk_Illumina_PEv1 3 0_Vibrio](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/5261bcc6-fa32-4907-b09e-be90d74f56ab)
 
 ## Terra workspace
 
