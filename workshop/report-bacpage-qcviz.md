@@ -134,3 +134,11 @@ the General Statistics table.
    - High quality and pure assemblies will have almost all `Complete and single-copy BUSCOs`, incomplete assemblies 
      will have mostly `Fragmented BUSCOs` and `Missing BUSCOs`, while contaminated and un-pure assemblies will have 
      mostly `Complete and duplicated BUSCOs`
+
+## Other related resources
+More information for the reports collected in this workflow can be found in the documentation for the individual 
+reports:
+ - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+ - [Qualimap BamQC](http://qualimap.conesalab.org/doc_html/analysis.html#bamqc)
+ - [QUAST](https://quast.sourceforge.net/docs/manual.html#sec3)
+ - [BUSCO](https://busco.ezlab.org/busco_userguide.html#interpreting-the-results)
