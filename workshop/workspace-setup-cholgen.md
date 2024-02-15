@@ -24,10 +24,11 @@ Workspaces are a good way to scope data by project, and each is associated with 
 To get started, each particpant will malke a working clone of the workshop workspace. Cloning the workspace will allow you to run your own analysis and inspect outputs without overwriting others. 
 
 
-1. Navigate to view the list of workspaces you can access: [https://app.terra.bio/#workspaces](https://app.terra.bio/#workspaces).
+1. Navigate to view the list of workspaces you can access: [https://publichealth.terra.bio/#workspaces](https://publichealth.bio/#workspaces).
 2. Navigate to the workspaces page
 
-<img width="40%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/">
+![click-workspaces](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/85add471-359e-4a4a-bd8c-fb56c4280ff4)
+
 
 
 
