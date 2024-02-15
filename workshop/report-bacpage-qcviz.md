@@ -83,6 +83,8 @@ the `sample_set` table. This will open a "File Details" box where you can access
      click that. This leads to an "Object details" page with information and several links for this particular file. 
      Click the "Authenticated URL" link. This will open the report in your web browser.
 
+An example report file can be [found here](../bacterial-assembly-qcreport-sample.html).
+
 ### General Statistics table
 Consult the General Statistics table at the top of the page. 
 Hover-over any column header for a brief description of the statistic. 
