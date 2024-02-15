@@ -74,7 +74,7 @@ The `sample` table now has a number of additional output columns, including cons
 quality assessment reports, and various numeric counts and metrics. 
 
 #### Metrics
-We will evaluate these in more depth in the [_Vcholerae_ QC reports](workshop/report-bacpage-qcviz) tutorial next, 
+We will evaluate these in more depth in the [_Vibrio cholerae_ QC reports](workshop/report-bacpage-qcviz) tutorial next, 
 but the key outputs of interest are:
  - The total number of reads found for a sample: `total_reads`
  - The number of reads that were successfully mapped against the O1 Vibrio cholerae reference genome: `mapped_reads`
