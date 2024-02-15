@@ -1,4 +1,4 @@
-# Viral read alignment, variant calling, and consensus calling
+# Reference-based assembly for O1 Vibro cholerae
 
 This is a walkthrough of a workflow to perform reference-based assembly of Vibrio cholerae.
 
