@@ -21,6 +21,8 @@ The process comprises five main steps:
 2. Call variants in the BAM file relative to the reference.
 3. Generate a consensus sequence from the variants.
 
+<img width="90%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/21b02fbd-f69a-4b45-b2c3-7d5e113fee86">
+
 %Insert picture of workflow%
 
 ## Terra workspace setup
@@ -56,7 +58,7 @@ Make sure to set the following:
 
 The resulting workflow launch page should look like this when you are ready:
 
-%insert screenshot of workflow launch page%
+<img width="40%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/5019dd7c-348a-49a2-b3f6-4f0ed7f5de94">
 
 Click "RUN ANALYSIS" (which should be dark blue if you've filled in all inputs properly). This will take you to a job submission
 status page for your newly launched workflow, showing rows in the bottom table corresponding to the samples that you 
