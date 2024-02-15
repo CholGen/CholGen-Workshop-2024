@@ -21,7 +21,7 @@ The process comprises five main steps:
 2. Call variants in the BAM file relative to the reference.
 3. Generate a consensus sequence from the variants.
 
-<img width="40%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/21b02fbd-f69a-4b45-b2c3-7d5e113fee86">
+<img width="40%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/6b662628-6d4c-442a-b1fa-0a9e32bff061">
 
 ## Terra workspace setup
 This tutorial assumes your Terra workspace has been setup according to [Workspace setup](workshop/workspace-setup.md)
