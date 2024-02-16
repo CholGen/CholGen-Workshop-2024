@@ -23,7 +23,7 @@ The process comprises five main steps:
 2. Masking recombinant and user-specified regions from the alignment.
 3. Performing phylogenetic inference.
 
-%Insert workflow image of phylogeny%
+<img width="40%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/7905c0db-d0aa-4002-a6ad-024f00e2c0c8">
 
 ## Terra workspace setup
 This tutorial assumes you have run the workflows presented in and [Reference based assembly for O1 _Vibro cholerae_](workshop/bacpage-assemble.md).
@@ -68,12 +68,12 @@ Make sure to set the following:
   - `phylogeny_reconstruction.background_dataset` (required) should be set to `workspace.o1_background`
   - `phylogeny_reconstruction.consensus_sequences` (required) should be set to `this.samples.consensus_sequence`
   - `phylogeny_reconstruction.recombinant_mask` should be set to `workspace.vc_mask`
-  - `phylogeny_reconstruction.outgroup` should be set to `Asia|IDN|ERR025382|UNK|1957`
+  - `phylogeny_reconstruction.outgroup` should be set to `"Asia|IDN|ERR025382|UNK|1957"` (Note: the quotes are required)
 - Click the SAVE button after you've set all the inputs. 
 
 The resulting workflow launch page should look like this when you are ready:
 
-%Add image of complete workflow launch page%
+<img width="80%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/cc994940-e2f9-4d3a-97d6-7cc073c4cc23">
 
 Click "RUN ANALYSIS" (which should be dark blue if you've filled in all inputs properly). 
 This will take you to a job submission status page for your newly launched workflow, showing a single row in the 
