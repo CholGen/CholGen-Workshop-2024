@@ -50,9 +50,9 @@ Make sure to set the following:
 - "Step 1 -- Select data table:" should be set to `sample_set`.
 - "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. At the top, make sure that 
   "Create a new sample_set from selected samples" is selected. Check the box for all rows of the `sample` 
-  table so that Terra will launch a job for each sample in the table. Hit the OK button on the lower right of the 
-  pop up box. This should return you to the workflow setup page which should now say that it will run on "1 selected 
-  sample_set". 
+  table so that Terra will include all samples in the table in the workflow. Hit the OK button on 
+  the lower right of the pop up box. This should return you to the workflow setup page which should now say that it 
+  will run on "1 selected sample_set".  
 - In the inputs table, you will need to populate the following required inputs:
   - `MultiQC.bamqc_data` (required) should be set to `this.samples.bamqc_data`
   - `MultiQC.busco_reports`  should be set to `this.samples.busco_report`
