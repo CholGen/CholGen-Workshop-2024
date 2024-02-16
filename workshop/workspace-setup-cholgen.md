@@ -2,6 +2,12 @@
 
 This is a walkthrough demonstrating initial set up of a workspace on the Terra cloud platform for the CholGen Workshop.
 
+# Contents
+{:.no_toc}
+
+1. Table of Contents
+{:toc}
+
 ## Terra documentation
 
 In addition to the aspects of Terra described below, additional information concerning Terra can be found in the [official Terra documentation](https://support.terra.bio/hc/en-us/categories/360001399872).
