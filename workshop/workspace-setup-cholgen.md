@@ -10,7 +10,7 @@ Terra is tested using and intended to be accessed with the [Google Chrome browse
 
 ## Sign in to Terra 
 
-1. Navigate to [https://app.terra.bio](https://app.terra.bio).
+1. Navigate to [https://publichealth.terra.bio](https://publichealth.terra.bio).
 2. Click the icon in the upper left corner to expand the main menu.
 3. Click "Sign In". A popup window will appear[^1]. 
 4. Click "Sign in with Google", and authenticate using the credentials for your Google account.
