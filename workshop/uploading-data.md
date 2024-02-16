@@ -34,7 +34,7 @@ Next, select the workspace that you cloned previously in the workshop.
 
 ![Screenshot 2024-02-16 at 5 00 24 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/155f87e9-0abc-4f47-b17c-99c8baadb0c0)
 
-### Step 2: Create/choose a data collection
+### Step 2: Create a data collection
 Once you've selected the target workspace, you'll be prompted to either create a "collection" or select an existing one. Name your collection and click `Create collection`
 
 ![Screenshot 2024-02-16 at 5 02 09 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/f0b586f0-879b-469e-9af0-d2eb045366fc)
