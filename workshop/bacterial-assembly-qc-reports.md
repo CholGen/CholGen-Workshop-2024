@@ -55,12 +55,17 @@ Escherichia: min 4,200,000, max 5,900,000
 Salmonella: min 4,400,000, max 5,600,000
 Vibrio: min 3,800,000, max 5,300,000
 
-If you wish to override any of these thresholds, or add a new treshold, you may do so by passing in a json string with the genus name and the relevant value to each metric's input space. An example of valid json files if we wanted to add metrics for Klevsiella and Shigella would look like:
+If you wish to override any of these thresholds or add a new treshold, you may do so by passing in a json file with the metric, genus name and the relevant value to each metric's input space. Note that the json file must be uploaded to your Terra workspace to be accessible when configuring the workflow's inputs. The metrics must be exactly defined as:
 
-custom_est_coverage_thresholds: `'{"Klebsiella":17, "Shigella":17}'`
-custom_contig_thresholds: `'{"Klebsiella":17, "Shigella":17}'`
-custom_assembly_thresholds: `'{"Klebsiella":{"min":1500000,"max":2500000}, "Shigella":{"min":1500000,"max":2500000}}'`
-Please not that these example json strings do not contain real values.
+`est_coverage_clean` for estimated coverage
+`number_contigs` for number of contigs
+`assembly_length` for assembly length
+note that the upper and lower thresholds must be marked by `min` and `max`
+An example of a valid json file if we wanted to add metrics for Klevsiella and Shigella would look like:
+
+{ "est_coverage_clean": { "Klebsiella": 17, "Shigella": 17 }, "number_contigs": { "Klebsiella": 17, "Shigella": 17 }, "assembly_length": { "Klebsiella": { "min": 1500000, "max": 2500000 }, "Shigella": { "min": 1500000, "max": 2500000 } } }
+
+Please not that this example json file does not contain real values and is only provided for reference.
 
 ##What does it return as output?
 
