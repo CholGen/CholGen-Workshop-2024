@@ -115,6 +115,8 @@ While a lot of statistics are shown, the statistics discussed below are the most
 5. The `Species prediction` columns shows the predicted taxonomic classification of the _de novo_ assembly. This 
    should be consulted when the percentage of mapped reads is low, to determine what species the sample likely is.
 
+<img width="80%" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/486245/4c17841d-16f1-4f23-a7b4-b652fe9dc571">
+
 ### Plots
 The plots below the general statistics table can be consulted if desired, and contain supplemental information to 
 the General Statistics table.
