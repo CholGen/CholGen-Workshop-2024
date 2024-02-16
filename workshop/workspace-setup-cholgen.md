@@ -40,17 +40,16 @@ To get started, each particpant will malke a working clone of the workshop works
 
 ![Screenshot 2024-02-15 at 4 42 29 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/b8dc34e3-1b35-4e99-b515-161f159fef2b)
 
-6. In the workspace name, replace “copy” with your name. Click “**clone workspace**”.
+6. Give the new (clone) workspace a descriptive Workspace name -- for the purposes of this workshop, include your initials or name in order to uniquely identify it (e.g. "CholGen 2024 Joe Smith"). Set the Billing project to "gates-pgs-training" (if it isn't already).
+Leave the Bucket location and Description as their default values. **_DO NOT_** select "**Workspace will have protected data**". **_Do not_** select an **Authorization Domain**; doing so will complicate access and sharing of workspace data.
+
+7. Click “**clone workspace**”.
    
 ![Screenshot 2024-02-15 at 4 45 51 PM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/7104473b-96d3-4b5d-8133-ea4c6179cb7f)
 
-**_DO NOT_** select "**Workspace will have protected data**". **_Do not_** select an **Authorization Domain**; doing so will complicate access and sharing of workspace data.
+
 8. This creates a copy of the original workspace for just you to use. Check that the workspace you are currently working in is your copy. 
 
 
 
-The content of Terra data tables can be exported to TSV files for viewing and manipulation in external tools. 
-The same data can also be copied to the user's clipboard.
-
-TSV data can also be imported to create a new data table or modify the values of an existing table, as shown above.
 
