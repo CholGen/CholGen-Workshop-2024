@@ -12,7 +12,7 @@ This is a walkthrough of a workflow to perform reference-based assembly of Vibri
 The exercise will utilize workflows based on the bacpage bioinformatics pipeline.
 The workflow itself is available on [Dockstore](https://dockstore.org/my-workflows/github.com/CholGen/bacpage/bacpage-assemble).
 The source code for this workflow as well as bacpage is available on [GitHub](https://github.com/CholGen/bacpage/blob/master/bacpage/workflows/assemble.wdl)
-This workflow is designed for execution on the [Terra](https://terra.bio) platform, but can also be run on other cloud 
+This workflow is designed for execution on the [Terra](https://publichealth.terra.bio/) platform, but can also be run on other cloud 
 platforms as well as on the command line using miniWDL.
 
 Briefly, the workflow generates a reference-based assembly from raw Illumina paired-end sequencing data. 

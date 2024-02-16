@@ -13,7 +13,7 @@ reference-based assembly.
 The exercise will utilize workflows based on the bacpage bioinformatics pipeline.
 The workflow itself is available on [Dockstore](https://dockstore.org/my-workflows/github.com/CholGen/bacpage/bacpage-phylogeny).
 The source code for this workflow as well as bacpage is available on [GitHub](https://github.com/CholGen/bacpage/tree/master/bacpage/workflows/phylogeny.wdl)
-This workflow is designed for execution on the [Terra](https://terra.bio) platform, but can also be run on other cloud 
+This workflow is designed for execution on the [Terra](https://publichealth.terra.bio/) platform, but can also be run on other cloud 
 platforms as well as on the command line using miniWDL.
 
 Briefly, this tutorial will take you through the process of reconstructing a phylogeny from pathogen genome 
