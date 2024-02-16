@@ -29,6 +29,15 @@ The process combines reports from six tools:
 ## Terra workspace setup
 This tutorial assumes you have run the workflows presented in [Bacterial _de novo_ assembly and typing](workshop/theiaprok-illumina.md) 
 and [Reference based assembly for O1 _Vibro cholerae_](workshop/bacpage-assemble.md).
+Specifically, this tutorial expects your workspace sample table to contain the following columns:
+- `bamqc_data`
+- `busco_report`
+- `fastqc_data`
+- `quast_report`
+- `samtools_idxstats`
+- `samtools_stats`
+
+Check to make sure it is present.
 
 ## Analysis walkthrough
 From your workspace, click on the Workflows tab on the top. This should lead to a list of analysis workflows that have
@@ -38,12 +47,13 @@ This will lead to a workflow launch page where you will need to set the paramete
 Make sure to set the following:
 - The `bacpage-quality-assessment` "Version:" should be already set to `master`, but make sure it is set as such.
 - "Run workflow(s) with inputs defined by data table" should be selected (not "file paths").
-- "Step 1 -- Select root entity type:" should be set to `sample_set`.
-- "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. Check box all four rows of
-  the `sample` table so that we launch a job for each sample in the table. Hit the OK button
-  on the lower right of the pop up box. This should return you to the workflow setup page which should now say that
-  it will run on "1 selected sample_set" .
-- In the inputs table, we will need to populate the following required inputs:
+- "Step 1 -- Select data table:" should be set to `sample_set`.
+- "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. At the top, make sure that 
+  "Create a new sample_set from selected samples" is selected. Check the box for all rows of the `sample` 
+  table so that Terra will launch a job for each sample in the table. Hit the OK button on the lower right of the 
+  pop up box. This should return you to the workflow setup page which should now say that it will run on "1 selected 
+  sample_set". 
+- In the inputs table, you will need to populate the following required inputs:
   - `MultiQC.bamqc_data` (required) should be set to `this.samples.bamqc_data`
   - `MultiQC.busco_reports`  should be set to `this.samples.busco_report`
   - `MultiQC.fastqc_data` should be set to `this.samples.fastqc_data`
@@ -83,7 +93,7 @@ the `sample_set` table. This will open a "File Details" box where you can access
      click that. This leads to an "Object details" page with information and several links for this particular file. 
      Click the "Authenticated URL" link. This will open the report in your web browser.
 
-An example report file can be [found here](../bacterial-assembly-qcreport-sample.html).
+An example report file can be [found here](../assets/multiqc_report.html).
 
 ### General Statistics table
 Consult the General Statistics table at the top of the page. 

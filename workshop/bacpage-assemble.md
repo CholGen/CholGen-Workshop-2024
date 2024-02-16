@@ -41,8 +41,8 @@ Make sure to set the following:
  - The `bacpage-assemble` "Version:" should be already set to `master`, but make sure it is set as such.
  - "Run workflow(s) with inputs defined by data table" should be selected (not "file paths").
  - "Step 1 -- Select root entity type:" should be set to `sample`.
- - "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. Check box all four rows of 
-   the `sample` table so that we launch a job for each sample in the table. Hit the OK button 
+ - "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. Check the box on all 
+   rows of the `sample` table so that we launch a job for each sample in the table. Hit the OK button 
    on the lower right of the pop up box. This should return you to the workflow setup page which should now say that 
    it will run on "X selected samples" (where X is the number of samples in your table).
    - Alternatively, you might only run the workflow on the samples which where classified as _Vibrio cholerae_ by 
