@@ -54,12 +54,12 @@ Make sure to set the following:
   the lower right of the pop up box. This should return you to the workflow setup page which should now say that it 
   will run on "1 selected sample_set".  
 - In the inputs table, you will need to populate the following required inputs:
-  - `MultiQC.bamqc_data` (required) should be set to `this.samples.bamqc_data`
-  - `MultiQC.busco_reports`  should be set to `this.samples.busco_report`
-  - `MultiQC.fastqc_data` should be set to `this.samples.fastqc_data`
-  - `MultiQC.quast_reports` should be set to `this.samples.quast_report`
-  - `MultiQC.samtools_idxstats` should be set to `this.samples.samtools_idxstats`
-  - `MultiQC.samtools_stats` should be set to `this.samples.samtools_stats`
+  - `MultiQC.bamqc_data` (required) should be set to `this.cholera_samples.bamqc_data`
+  - `MultiQC.busco_reports`  should be set to `this.cholera_samples.busco_report`
+  - `MultiQC.fastqc_data` should be set to `this.cholera_samples.fastqc_data`
+  - `MultiQC.quast_reports` should be set to `this.cholera_samples.quast_report`
+  - `MultiQC.samtools_idxstats` should be set to `this.cholera_samples.samtools_idxstats`
+  - `MultiQC.samtools_stats` should be set to `this.cholera_samples.samtools_stats`
 - In the outputs table, select `Use defaults` in the upper right cell.
 - Click the SAVE button after you've set all the inputs.
 

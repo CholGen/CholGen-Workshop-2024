@@ -51,7 +51,7 @@ Make sure to set the following:
  - In the inputs table, we will need to populate the following required inputs:
    - `reference_based_assembly.read1` (required) should be set to `this.read1`
    - `reference_based_assembly.read2` (required) should be set to `this.read2`
-   - `reference_based_assembly.sample_name` (required) should be set to `this.sample_id`
+   - `reference_based_assembly.sample_name` (required) should be set to `this.cholera_sample_id`
  - Click the SAVE button after you've set all the inputs. 
 
 The resulting workflow launch page should look like this when you are ready:
