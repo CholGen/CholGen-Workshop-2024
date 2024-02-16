@@ -1,8 +1,10 @@
-# CholGen Workshop
-Documentation for Cholera Bioinformatics Workshop
+# Cholera Bioinformatics Workshop
+
 Training dates: February 19-23, 2024
 
-A Terra [workspace](https://publichealth.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) has been created for the training that contains cholera data and tools. We will use this workspace for hands on exercises throughout the week.
+This page contains documentation for the hands-on exercises throughout the workshop. 
+
+A Terra [workspace](https://publichealth.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) has been created for the training that contains cholera data and tools. We will use this workspace for hands-on exercises throughout the week.
 
  - [Workspace setup](workshop/workspace-setup-cholgen.md)
  - [Uploading your own data](workshop/uploading-data.md)
