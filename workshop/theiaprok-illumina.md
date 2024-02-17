@@ -37,29 +37,7 @@ dataset of Vibrio cholerae sequencing from various African partner institutions.
 
 ## Walkthrough
 
-### Clone the workspace
-
-A workspace for these exercises has been created in advance, and contains the required input data organized into distinct tables.
-The tables can be explored from the "[**Data**](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024/data)" tab.
-
-Before beginning the exercise, the pre-made workspace will be copied to a "clone" that will be yours to use for these exercises. 
-Using a cloned workspace will ensure that the compute jobs and their outputs you see are yours alone.
-
-<img width="40%" alt="image" src="https://github.com/broadinstitute/viral-workshops/assets/8513746/7ee1527f-713e-4b27-88b0-bf47cd266278">
-
- - Navigate to the [workspace for this workshop](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024/)
- - Expand the workspace actions menu by clicking the round button with three dots (vertical ellipsis) in the upper right corner
- - Select **Clone**
- - In the modal dialog box that appears: 
-  - Give the new (clone) workspace a descriptive `Workspace name` -- for the purposes of this workshop, include your initials or name in order to uniquely identify it (e.g. "CholGen 2024 Joe Smith").
-  - Set the `Billing project` to "gates-pgs-training" (if it isn't already).
-  - Leave the `Bucket location` and `Description` as their default values.
-  - **Do not check** the protected data box or select an Authorization domain -- these will (intentionally) make data access much more difficult and is unnecessary for most work on Terra, especially training workshops.
-
-<img width="40%" alt="image" src="https://github.com/broadinstitute/viral-workshops/assets/8513746/122baba8-432c-482a-b4c5-507fc7f5e6d0">
-
-
-
+Navigate to the cloned workspace you created earlier in the workshop.
 
 ### Run TheiaProk_Illumina_PE_PHB
 
