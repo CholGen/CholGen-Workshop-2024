@@ -66,7 +66,7 @@ The data files will be in workspace storage - in a directory called uploads in a
 
 The metadata will be in a data table. 
 
-To view a video tutorial of how to use the data uploader, see [here] (https://youtu.be/DTU4rON0ycI?si=cW0XXKW5yj8fPxH1)
+To view a video tutorial of how to use the data uploader, see [here](https://youtu.be/DTU4rON0ycI?si=cW0XXKW5yj8fPxH1)
 
 
 
