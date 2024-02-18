@@ -17,9 +17,9 @@ TheiaProk is accessible from [Dockstore](https://dockstore.org/workflows/github.
 and has extensive [documentation](https://theiagen.notion.site/TheiaProk-Workflow-Series-cc66a9dc42a144a789990935465bc9ff). 
 
 In this exercise, the pipeline will run on the [Terra](https://terra.bio/) platform, however the pipeline is known
-to work on other cloud platforms as well as via the command line using [miniWDL](https://miniwdl.readthedocs.io/en/latest/getting_started.html).
+to work on other cloud platforms as well as via the command line using [miniWDL](https://miniwdl.readthedocs.io/en/latest/getting_started.html). We will use the Illumina_PE flavor of this pipeline, as the data used in this workshop is exclusively paired end Illumina data.
 
-Briefly, the `assemble_denovo` pipeline consists of the following steps:
+Briefly, the `TheiaProk_Illumina_PE_PHB` pipeline consists of the following steps:
 1. Input read screening (ensures the quantity of sequence data is sufficient to undertake genomic analysis)
 2. Read QC and trimming
 3. *de novo* assembly via Shovill
@@ -31,9 +31,9 @@ Briefly, the `assemble_denovo` pipeline consists of the following steps:
 
 ## Terra workspace
 
-For this exercise, we have created a [Terra workspace](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) in advance and loaded in the sequencing read data and workflows. This is a
-dataset of Vibrio cholerae sequencing from various African partner institutions.
+For this exercise, we have created a [Terra workspace](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) in advance and loaded in the sequencing read data and workflows. This is a dataset of _Vibrio cholerae_ sequencing from various African partner institutions.
 
+In a previous session, you should have already cloned this template workspace for the workshop into your own working copy for analyses ([walkthrough](workspace-setup-cholgen.md))
 
 ## Walkthrough
 
@@ -41,16 +41,14 @@ Navigate to the cloned workspace you created earlier in the workshop.
 
 ### Run TheiaProk_Illumina_PE_PHB
 
-Click on the **Workflows** tab on the top. This should lead to a list of analysis workflows that have already been preloaded into your
-workspace. One of them is `TheiaProk_Illumina_PE_PHB`.
+Click on the **Workflows** tab on the top. This should lead to a list of analysis workflows that have already been preloaded into your workspace. One of them is `TheiaProk_Illumina_PE_PHB`.
 
-This will lead to a workflow configuration page where you will need to set parameters and inputs before launching your analysis.
-Make sure to set the following:
+This will lead to a workflow configuration page where you will need to set parameters and inputs before launching your analysis. Make sure to set the following:
 
 - The `TheiaProk_Illumina_PE_PHB` "Version:" should be already set to `v1.3.0`, but make sure it is set as such.
 - "Run workflow(s) with inputs defined by data table" should be selected (not "file paths").
-- "Step 1 — Select root entity type:" should be set to `sample`.
-- "Step 2 — **SELECT DATA**" — click on this button and a data selector box will pop up. Check box all six rows of the `sample` table so that we launch multiple assembly jobs at the same time, one for each sample in the table. After selecting the rows, click the **OK** button on the lower right of the pop up box. This should return you to the workflow setup page which should now say that it will run on "6 selected samples" [sic].
+- "Step 1 — Select root entity type:" should be set to `cholera_sample`.
+- "Step 2 — **SELECT DATA**" — click on this button and a data selector box will pop up. Check box all 221 rows of the `cholera_sample` table so that we launch multiple assembly jobs at the same time, one for each sample in the table. In order to check all 221 rows, you will need to click the downward pointing black triangle next to the empty checkbox on the header row of the table. This will pull down a menu and you can select "All (221)" from the menu. This will return you to the sample selector table with all 221 rows filled in. After selecting the rows, click the **OK** button on the lower right of the pop up box. This should return you to the workflow setup page which should now say that it will run on "221 selected cholera_samples".
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/797820b2-1062-4d64-b662-752c8b09a5fc)
 
@@ -117,26 +115,18 @@ After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` 
 including assembly coverage plots for viewing read depth across the genome, `.fasta` sequence files, various intermediate output files, and metrics such as `assembly_length_unambiguous` and `mean_coverage`.
 
 Among the many new columns, the following contain the outputs of `TheiaProk_Illumina_PE_PHB` that are worth inspecting first:
- - `gambit_predicted_taxon`
- - `ani_top_species_match`, `ani_output_tsv`
- - `kmerfinder_top_hit`
- - `serotypefinder_serotype`
- - `srst2_vibrio_serogroup`, `srst2_vibrio_detailed_tsv`
- - `amr_finderplus_virulence_genes`
- - `resfinder_predicted_pheno_resistance`
- - `plasmid_finder_plasmids`
- - `clean_read_screen`
- - `num_reads_clean_pairs`
- - `number_contigs`
- - `prokka_gbf`, `prokka_gff`, `prokka_sqn`
-
-Among the many new columns, the following contain the outputs of the `assemble_denovo` workflow that are worth inspecting first:
- - `final_assembly_fasta` — contains sequence(s) assembled from the input reads (up to one per segment). The sequence(s) may contain ambiguous bases (`N`s) in regions of the genome lacking adequate read depth. All bases present represent coverage by actual reads and not bases imputed from references.
- - `aligned_bam` — contains reads mapped to the sequence of the final assembly ("mapped to self"), in [bam format](https://samtools.github.io/hts-specs/SAMv1.pdf).
- - `coverage_plot` - visualizes read depth as a function of genome location. Peaks indicate regions of high coverage; few reads mapped in regions with values near zero
- - `assembly_length` — the number of bases between the start and end position of the assembled sequence(s); this includes both known bases _and_ **ambiguous** bases (`N`s), and is not representative of the overall success of the assembly process
- - `assembly_length_unambiguous` — the number of distinct positions in the final assemgbly with unambigious bases (i.e. where the bases are known and not `N`). For a complete assembly, `assembly_length_unambiguous` will be close in value to the length of a known reference genome
- - `mean_coverage` — the number of reads mapped to the assembly, divided by the number of unambiguous bases
+ - `gambit_predicted_taxon` - bacterial species prediction with the GAMBIT tool
+ - `ani_top_species_match`, `ani_output_tsv` - bacterial species prediction with the ANI tool
+ - `kmerfinder_top_hit` - bacterial species prediction via the kmerfinder tool
+ - `serotypefinder_serotype` - serotyping via the serotypefinder tool (generic for most bacteria)
+ - `srst2_vibrio_serogroup`, `srst2_vibrio_detailed_tsv` - serotyping via the srst2 tool (vibrio-specific)
+ - `amr_finderplus_virulence_genes` - AMR calling via AMR Finder Plus
+ - `resfinder_predicted_pheno_resistance` - AMR calling ia ResFinder
+ - `plasmid_finder_plasmids` - plasmid identification
+ - `clean_read_screen` - read screening results
+ - `num_reads_clean_pairs` - number of cleaned reads
+ - `number_contigs` - number of de novo contigs produced
+ - `prokka_gbf`, `prokka_gff`, `prokka_sqn` - Genbank submission files from the Prokka tool
 
 The metrics for the assemblies should be similar to those in the following table:
 
@@ -151,17 +141,6 @@ The metrics for the assemblies should be similar to those in the following table
 
 Near-complete assemblies were produced for two samples, LASV_NGA_2016_1423 and LASV_NGA_2016_0759. Two produced partial assemblies, LASV_NGA_2016_0409 and LASV_NGA_2016_1547.
 The remaining did not yield usable assemblies, though one, LASV_NGA_2016_0811, did have low-depth partial coverage across the genome.
-
-Plots illustrating coverage depth for the assemblies are now available in PDF files listed in the `coverage_plot` column, and included here for reference:
- - [LASV_NGA_2016_0409](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0409.ll2.coverage_plot.pdf)
- - [LASV_NGA_2016_0759](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0759.ll1.cleaned.downsampled.dedup.mapped.coverage_plot.pdf)
- - [LASV_NGA_2016_0811](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0811.ll3.coverage_plot.pdf)
- - [LASV_NGA_2016_1423](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_1423.coverage_plot.pdf)
- - [LASV_NGA_2016_1547](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_1547.ll4.coverage_plot.pdf)
-
-The two colors shown each plot correspond to the two segments of the LASV genome (L, and S, respectively).
-
-<img width="80%" alt="assembly coverage plot overview" src="https://github.com/broadinstitute/viral-workshops/assets/53064/2c10640a-7226-4f80-a769-e796d261361e" usemap="#image-map">
 
 ### Inspecting results from this walkthrough
 
