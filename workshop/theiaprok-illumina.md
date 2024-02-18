@@ -104,9 +104,9 @@ Additionally, you can also click on the **JOB HISTORY** tab at the top of your w
 When the `TheiaProk_Illumina_PE_PHB` workflow jobs have finished running, you can move on to evaluating the results.
 The job submission page for your submission under the Job History tab should look like this when the submissions are complete:
 
-<img width="80%" alt="image of job history" src="https://github.com/broadinstitute/viral-workshops/assets/53064/68eea307-7030-4cd2-8763-127f798e542f">
+<img width="1149" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ea0bdc91-f1de-442f-ae23-3cd3750b1ab1">
 
-Depending on some predictable and some unpredictable factors, the `TheiaProk_Illumina_PE_PHB` jobs should complete within <**TBD** minutes for input data of the sizes provided in this exercise.
+Depending on some predictable and some unpredictable factors, the `TheiaProk_Illumina_PE_PHB` jobs should complete within an hour for input data of the sizes provided in this exercise.
 
 ## Evaluating results
 
@@ -115,6 +115,20 @@ it is easier to view the saved top level outputs in the data table—in this cas
 
 After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a number of additional output columns,
 including assembly coverage plots for viewing read depth across the genome, `.fasta` sequence files, various intermediate output files, and metrics such as `assembly_length_unambiguous` and `mean_coverage`.
+
+Among the many new columns, the following contain the outputs of `TheiaProk_Illumina_PE_PHB` that are worth inspecting first:
+ - `gambit_predicted_taxon`
+ - `ani_top_species_match`, `ani_output_tsv`
+ - `kmerfinder_top_hit`
+ - `serotypefinder_serotype`
+ - `srst2_vibrio_serogroup`, `srst2_vibrio_detailed_tsv`
+ - `amr_finderplus_virulence_genes`
+ - `resfinder_predicted_pheno_resistance`
+ - `plasmid_finder_plasmids`
+ - `clean_read_screen`
+ - `num_reads_clean_pairs`
+ - `number_contigs`
+ - `prokka_gbf`, `prokka_gff`, `prokka_sqn`
 
 Among the many new columns, the following contain the outputs of the `assemble_denovo` workflow that are worth inspecting first:
  - `final_assembly_fasta` — contains sequence(s) assembled from the input reads (up to one per segment). The sequence(s) may contain ambiguous bases (`N`s) in regions of the genome lacking adequate read depth. All bases present represent coverage by actual reads and not bases imputed from references.
@@ -162,5 +176,4 @@ The columns shown or hidden for a data table can be configured by clicking the<i
 
 <img width="761" alt="column settings button" src="https://github.com/broadinstitute/viral-workshops/assets/53064/6bbb1bc7-17e5-447e-bd12-184a67f16504">
 
-<img width="822" alt="displayed column selector" src="https://github.com/broadinstitute/viral-workshops/assets/53064/355f570f-a9bf-4290-b09d-bbbb91ccbef2">
-
+<img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
