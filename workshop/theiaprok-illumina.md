@@ -87,7 +87,7 @@ Click the **LAUNCH** button to start the compute jobs.
 This will take you to a job submission status page for your newly launched workflow, 
 showing six rows in the bottom table corresponding to the six jobs that have been launched.
 
-<img width="80%" alt="Screenshot 2023-08-14 at 12 44 56" src="https://github.com/broadinstitute/viral-workshops/assets/53064/b6557013-79d2-448b-b99c-2bf4dd698432">
+![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/dd758c70-0dac-46e9-8d05-dd354f7fe298)
 
 No connectivity or power is required at the client side during this time; the jobs will continue to run on Terra if you navigate away from the page or shutdown your computer.
 
@@ -106,14 +106,14 @@ The job submission page for your submission under the Job History tab should loo
 
 <img width="80%" alt="image of job history" src="https://github.com/broadinstitute/viral-workshops/assets/53064/68eea307-7030-4cd2-8763-127f798e542f">
 
-Depending on some predictable and some unpredictable factors, the `assemble_denovo` jobs should complete within <20 minutes for input data of the sizes provided in this exercise.
+Depending on some predictable and some unpredictable factors, the `TheiaProk_Illumina_PE_PHB` jobs should complete within <**TBD** minutes for input data of the sizes provided in this exercise.
 
 ## Evaluating results
 
 You can examine the outputs and results of each step of each job via the Job History page, however, for large submissions, 
 it is easier to view the saved top level outputs in the data table—in this case, the `sample` table. 
 
-After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `sample` table should have a number of additional output columns,
+After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a number of additional output columns,
 including assembly coverage plots for viewing read depth across the genome, `.fasta` sequence files, various intermediate output files, and metrics such as `assembly_length_unambiguous` and `mean_coverage`.
 
 Among the many new columns, the following contain the outputs of the `assemble_denovo` workflow that are worth inspecting first:
