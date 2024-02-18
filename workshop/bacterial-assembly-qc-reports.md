@@ -67,10 +67,11 @@ An example of a valid json file if we wanted to add metrics for Klevsiella and S
 
 Please not that this example json file does not contain real values and is only provided for reference.
 
-##What does it return as output?
+## What does it return as output?
 
 `visualization_html`: An HTML file (QC_visualizations.html by default) containing interactive QC visualizations. This report includes various plots and tables summarizing the QC metrics for the provided samples, allowing for a comprehensive review of sequencing quality across different metrics and samples.
 
-Example html report:
-![Screenshot 2024-02-16 at 11 16 52 AM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/d1630e19-44a5-41cf-affc-e347da1dd834)
+[Example html report](../bacterial-assembly-qcreport-sample.html)
 
+Screenshot of example report:
+![Screenshot 2024-02-16 at 11 16 52 AM](https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/d1630e19-44a5-41cf-affc-e347da1dd834)
