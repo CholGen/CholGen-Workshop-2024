@@ -139,6 +139,8 @@ OPTIONAL: if the number of columns is too much to look at, you can create saved 
 
 <img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
 
+OPTIONAL: the Search box in the upper right of the data table view allows you to focus on certain rows that contain search patterns of interest. For example, enter `MOZ-` in the Search box to focus only on data originating from Mozambique. Or `O1` to focus on samples that were typed as _Vibrio cholerae_ O1.
+
 ### Inspecting results from this walkthrough
 
 **TO DO: replace this section**
