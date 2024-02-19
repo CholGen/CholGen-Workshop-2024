@@ -65,6 +65,7 @@ The following optional inputs are good to set to enable various species and stra
   - `theiaprok_illumina_pe.call_ani` should be set to `true` to enable ANI-based species identification.
   - `theiaprok_illumina_pe.call_kmerfinder` should be set to `true` to enable kmerfinder-based species identification.
   - `theiaprok_illumina_pe.call_resfinder` should be set to `true` to enable resfinder-based AMR calling.
+  - `read_QC_trim.read_qc` should be set to `"fastqc"` (include the double-quotes) to enable FastQC reports.
 - Click the **SAVE** button after you've set all the inputs.
 
 The top resulting workflow launch page should look like this when you are ready:
