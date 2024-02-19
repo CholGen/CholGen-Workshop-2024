@@ -27,6 +27,8 @@ Briefly, the `TheiaProk_Illumina_PE_PHB` pipeline consists of the following step
 5. AMR characterization and species-specific typing and tools
 6. Various QC outputs
 
+It generally assumes that you have performed DNA whole genome shotgun sequencing of bacterial isolates and attempts to assemble, identify, and characterize/type the dominant bacteial species present in the data. Some of the typing tools are species specific and are invoked only if those species are detected. For this workshop, the _Vibrio cholerae_ specific typing tool is called _srst2_ and will only be called if cholera was found in the data.
+
 ![TheiaProk_Illumina_PEv1 3 0_Vibrio](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/5261bcc6-fa32-4907-b09e-be90d74f56ab)
 
 ## Terra workspace
@@ -56,29 +58,32 @@ This will lead to a workflow configuration page where you will need to set param
 
 
 - In the inputs table on the lower part of the page, the following required inputs will need to be set:
-  - `assemble_denovo.reads_unmapped_bams` (required) should be set to `this.cleaned_bam`
-  - `assemble_denovo.reference_genome_fasta` (required) should be set to `workspace.lasv_reference_scaffold_genomes`
-  - `assemble_denovo.trim_clip_db` (required) should be set to `workspace.trim_clip_db`
-  - `scaffold.min_unambig` should be set to `0.8`; this corresponds to the fraction of the genome that must be covered by unambiguous bases (i.e. not `N`s) for a successful assembly.
+  - `theiaprok_illumina_pe.read1_raw` (required) should be set to `this.read1`
+  - `theiaprok_illumina_pe.read2_raw` (required) should be set to `this.read2`
+  - `theiaprok_illumina_pe.samplename` (required) should be set to `this.cholera_sample_id`
+The following optional inputs are good to set to enable various species and strain typing tools:
+  - `theiaprok_illumina_pe.call_ani` should be set to `true` to enable ANI-based species identification.
+  - `theiaprok_illumina_pe.call_kmerfinder` should be set to `true` to enable kmerfinder-based species identification.
+  - `theiaprok_illumina_pe.call_resfinder` should be set to `true` to enable resfinder-based AMR calling.
 - Click the **SAVE** button after you've set all the inputs.
 
-The resulting workflow launch page should look like this when you are ready:
+The top resulting workflow launch page should look like this when you are ready:
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/255e2cca-f71a-4de9-b8b1-3a6df40ec951)
 
-TO DO -- optional parameters:
+If you scroll farther down the workflow parameters on the launch page, you should see these optional parameters filled in:
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ae5cbc11-a742-4706-bb9e-69e4f1c75a2e)
 
 Click the **RUN ANALYSIS** button, which should be dark blue if all required inputs are properly set. 
 
 Another modal dialog box will appear with an input box to enter a (human-readable) text description of the workflows jobs to be launched.
 This is a helpful field to describe distinct or distinguishing features of the jobs being submitted, 
-so jobs with various parameters or inputs subsets can be quickly located among other jobs that have been run.
+so jobs with various parameters or inputs subsets can be quickly located among other jobs that have been run. This is simply a note to your future self about what you did and can be changed later on.
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/a7440035-a721-4aac-bf9f-11b5792df647)
 
 Enter a description of your choosing, 
-such as "de novo assembly of LASV genomes from six samples, with min_unambig passing threshold set to 0.8"
+such as "de novo assembly and characterization of 221 bacterial samples"
 
 Click the **LAUNCH** button to start the compute jobs.
 
@@ -87,7 +92,7 @@ showing six rows in the bottom table corresponding to the six jobs that have bee
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/dd758c70-0dac-46e9-8d05-dd354f7fe298)
 
-No connectivity or power is required at the client side during this time; the jobs will continue to run on Terra if you navigate away from the page or shutdown your computer.
+No connectivity or power is required at the client side after this point; the jobs will continue to run on Terra if you navigate away from the page or shutdown your computer.
 
 The total runtime (real-world clock time) should be somewhat independent of whether you launched jobs on 1 or 1,000 samples, as the workflows are executed in parallel on separate cloud compute instances.
 
@@ -109,10 +114,10 @@ Depending on some predictable and some unpredictable factors, the `TheiaProk_Ill
 ## Evaluating results
 
 You can examine the outputs and results of each step of each job via the Job History page, however, for large submissions, 
-it is easier to view the saved top level outputs in the data table—in this case, the `sample` table. 
+it is easier to view the saved top level outputs in the data table—in this case, the `cholera_sample` table. 
 
-After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a number of additional output columns,
-including assembly coverage plots for viewing read depth across the genome, `.fasta` sequence files, various intermediate output files, and metrics such as `assembly_length_unambiguous` and `mean_coverage`.
+After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a a large number of additional output columns,
+including data files and reports, assembly metrics, and typing results.
 
 Among the many new columns, the following contain the outputs of `TheiaProk_Illumina_PE_PHB` that are worth inspecting first:
  - `gambit_predicted_taxon` - bacterial species prediction with the GAMBIT tool
@@ -128,22 +133,15 @@ Among the many new columns, the following contain the outputs of `TheiaProk_Illu
  - `number_contigs` - number of de novo contigs produced
  - `prokka_gbf`, `prokka_gff`, `prokka_sqn` - Genbank submission files from the Prokka tool
 
-The metrics for the assemblies should be similar to those in the following table:
+OPTIONAL: if the number of columns is too much to look at, you can create saved "views" of your data tables that focus on a smaller number of columns of interest (such as the ones above). The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
 
-| entity:de_novo_assembly_id | assembly_length | assembly_length_unambiguous | mean_coverage      |
-|----------------------------|-----------------|-----------------------------|--------------------|
-| LASV_NGA_2016_0409         | 9056            | 5292                        | 55.897968197879855 |
-| LASV_NGA_2016_0668         |                 |                             |                    |
-| LASV_NGA_2016_0759         | 10551           | 10428                       | 161.0294758790636  |
-| LASV_NGA_2016_0811         | 8334            | 2717                        | 1.8178545716342693 |
-| LASV_NGA_2016_1423         | 10588           | 10588                       | 3051.3962032489612 |
-| LASV_NGA_2016_1547         | 9289            | 5363                        | 5.262568629561847  |
+<img width="761" alt="column settings button" src="https://github.com/broadinstitute/viral-workshops/assets/53064/6bbb1bc7-17e5-447e-bd12-184a67f16504">
 
-Near-complete assemblies were produced for two samples, LASV_NGA_2016_1423 and LASV_NGA_2016_0759. Two produced partial assemblies, LASV_NGA_2016_0409 and LASV_NGA_2016_1547.
-The remaining did not yield usable assemblies, though one, LASV_NGA_2016_0811, did have low-depth partial coverage across the genome.
+<img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
 
 ### Inspecting results from this walkthrough
 
+**TO DO: replace this section**
 Recall that when the `assemble_denovo` workflow was configured, the `min_unambig` parameter was set to `0.8`. 
 That value limits successful assemblies to those with ≥80% of bases known (i.e. not `N`).
 Lowering the `min_unambig` threshold will make the assembly process more permissive in the assemblies deemed "successful."
@@ -151,8 +149,3 @@ Lowering the `min_unambig` threshold will make the assembly process more permiss
 Try lowering `min_unambig` based on the "failing" jobs observed during the first set of assembly jobs, and compare the resulting assemblies.
 
 
-The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
-
-<img width="761" alt="column settings button" src="https://github.com/broadinstitute/viral-workshops/assets/53064/6bbb1bc7-17e5-447e-bd12-184a67f16504">
-
-<img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
