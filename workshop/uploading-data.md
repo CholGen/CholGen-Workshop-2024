@@ -68,5 +68,18 @@ The metadata will be in a data table.
 
 To view a video tutorial of how to use the data uploader, see [here](https://youtu.be/DTU4rON0ycI?si=cW0XXKW5yj8fPxH1)
 
+## Upload data to your workspace using the Files page
+
+Another way to upload your files to your Terra workspace is to utilize the *Files* page within your workspace. Navigate to the *Data* tab and click `Files`
+
+<img width="660" alt="Screenshot 2024-02-19 at 7 09 29 PM" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/52a4db02-37ac-43f4-acec-85a0a741f8c3">
+
+Once on the *Files* page, click the `Upload` button. You will be prompted to select your files saved locally for upload.
+
+<img width="921" alt="Screenshot 2024-02-19 at 7 10 13 PM" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/63110916/3b55450a-a138-48bf-96d0-2e5b708ecd3c">
+
+
+
+
 
 
