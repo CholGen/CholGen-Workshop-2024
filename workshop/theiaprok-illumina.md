@@ -133,13 +133,13 @@ Among the many new columns, the following contain the outputs of `TheiaProk_Illu
  - `number_contigs` - number of de novo contigs produced
  - `prokka_gbf`, `prokka_gff`, `prokka_sqn` - Genbank submission files from the Prokka tool
 
-OPTIONAL: if the number of columns is too much to look at, you can create saved "views" of your data tables that focus on a smaller number of columns of interest (such as the ones above). The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
+If the number of columns is too much to look at, **you can create saved "views" of your data tables that focus on a smaller number of columns** of interest (such as the ones above). The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
 
 <img width="761" alt="column settings button" src="https://github.com/broadinstitute/viral-workshops/assets/53064/6bbb1bc7-17e5-447e-bd12-184a67f16504">
 
-<img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
+<img width="771" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/c2e40a02-d00a-47a7-a095-3b4add89f175">
 
-OPTIONAL: the Search box in the upper right of the data table view allows you to focus on certain rows that contain search patterns of interest. For example, enter `MOZ-` in the Search box to focus only on data originating from Mozambique. Or `O1` to focus on samples that were typed as _Vibrio cholerae_ O1.
+The Search box in the upper right of the data table view allows you to **focus on certain rows** that contain search patterns of interest. For example, enter `MOZ-` in the Search box to focus only on data originating from Mozambique. Or `O1` to focus on samples that were typed as _Vibrio cholerae_ O1.
 
 ### Inspecting results from this walkthrough
 
@@ -149,4 +149,5 @@ Scroll through the `cholera_samples` data table after TheiaProk completes and lo
 3. Of the samples that were cholera by sequencing, how many typed as O1?
 4. Do quality metrics (e.g. screening pass/fail, other metrics) vary in any interesting way?
 5. Are any of the other columns (e.g. AMR/resistance columns) showing any interesting patterns or are they basically all the same?
-6. What genomic-informed questions can we not answer so far from this analysis?
+6. What genomic-informed public health questions can we answer so far from this analysis? What can we not answer yet (without further analyses)?
+7. What aspects of this analysis are useful for just cholera, and which are useful for sequence data from other bacterial isolates (e.g. enterics)?
