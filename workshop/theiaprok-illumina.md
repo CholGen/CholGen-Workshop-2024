@@ -143,11 +143,10 @@ OPTIONAL: the Search box in the upper right of the data table view allows you to
 
 ### Inspecting results from this walkthrough
 
-**TO DO: replace this section**
-Recall that when the `assemble_denovo` workflow was configured, the `min_unambig` parameter was set to `0.8`. 
-That value limits successful assemblies to those with ≥80% of bases known (i.e. not `N`).
-Lowering the `min_unambig` threshold will make the assembly process more permissive in the assemblies deemed "successful."
-
-Try lowering `min_unambig` based on the "failing" jobs observed during the first set of assembly jobs, and compare the resulting assemblies.
-
-
+Scroll through the `cholera_samples` data table after TheiaProk completes and look for trends. Some possible questions to think about based on these results:
+1. How many of these specimens turned out to be cholera in the sequencing data?
+2. Does it vary by country (how much of each country's samples were cholera vs other bacteria)?
+3. Of the samples that were cholera by sequencing, how many typed as O1?
+4. Do quality metrics (e.g. screening pass/fail, other metrics) vary in any interesting way?
+5. Are any of the other columns (e.g. AMR/resistance columns) showing any interesting patterns or are they basically all the same?
+6. What genomic-informed questions can we not answer so far from this analysis?
