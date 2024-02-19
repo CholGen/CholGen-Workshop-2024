@@ -17,9 +17,9 @@ TheiaProk is accessible from [Dockstore](https://dockstore.org/workflows/github.
 and has extensive [documentation](https://theiagen.notion.site/TheiaProk-Workflow-Series-cc66a9dc42a144a789990935465bc9ff). 
 
 In this exercise, the pipeline will run on the [Terra](https://terra.bio/) platform, however the pipeline is known
-to work on other cloud platforms as well as via the command line using [miniWDL](https://miniwdl.readthedocs.io/en/latest/getting_started.html).
+to work on other cloud platforms as well as via the command line using [miniWDL](https://miniwdl.readthedocs.io/en/latest/getting_started.html). We will use the Illumina_PE flavor of this pipeline, as the data used in this workshop is exclusively paired end Illumina data.
 
-Briefly, the `assemble_denovo` pipeline consists of the following steps:
+Briefly, the `TheiaProk_Illumina_PE_PHB` pipeline consists of the following steps:
 1. Input read screening (ensures the quantity of sequence data is sufficient to undertake genomic analysis)
 2. Read QC and trimming
 3. *de novo* assembly via Shovill
@@ -27,13 +27,15 @@ Briefly, the `assemble_denovo` pipeline consists of the following steps:
 5. AMR characterization and species-specific typing and tools
 6. Various QC outputs
 
+It generally assumes that you have performed DNA whole genome shotgun sequencing of bacterial isolates and attempts to assemble, identify, and characterize/type the dominant bacteial species present in the data. Some of the typing tools are species specific and are invoked only if those species are detected. For this workshop, the _Vibrio cholerae_ specific typing tool is called _srst2_ and will only be called if cholera was found in the data.
+
 ![TheiaProk_Illumina_PEv1 3 0_Vibrio](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/5261bcc6-fa32-4907-b09e-be90d74f56ab)
 
 ## Terra workspace
 
-For this exercise, we have created a [Terra workspace](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) in advance and loaded in the sequencing read data and workflows. This is a
-dataset of Vibrio cholerae sequencing from various African partner institutions.
+For this exercise, we have created a [Terra workspace](https://app.terra.bio/#workspaces/gates-pgs-africacdc/CholGen_Workshop_Feb2024) in advance and loaded in the sequencing read data and workflows. This is a dataset of _Vibrio cholerae_ sequencing from various African partner institutions.
 
+In a previous session, you should have already cloned this template workspace for the workshop into your own working copy for analyses ([walkthrough](workspace-setup-cholgen.md))
 
 ## Walkthrough
 
@@ -41,16 +43,14 @@ Navigate to the cloned workspace you created earlier in the workshop.
 
 ### Run TheiaProk_Illumina_PE_PHB
 
-Click on the **Workflows** tab on the top. This should lead to a list of analysis workflows that have already been preloaded into your
-workspace. One of them is `TheiaProk_Illumina_PE_PHB`.
+Click on the **Workflows** tab on the top. This should lead to a list of analysis workflows that have already been preloaded into your workspace. One of them is `TheiaProk_Illumina_PE_PHB`.
 
-This will lead to a workflow configuration page where you will need to set parameters and inputs before launching your analysis.
-Make sure to set the following:
+This will lead to a workflow configuration page where you will need to set parameters and inputs before launching your analysis. Make sure to set the following:
 
 - The `TheiaProk_Illumina_PE_PHB` "Version:" should be already set to `v1.3.0`, but make sure it is set as such.
 - "Run workflow(s) with inputs defined by data table" should be selected (not "file paths").
-- "Step 1 — Select root entity type:" should be set to `sample`.
-- "Step 2 — **SELECT DATA**" — click on this button and a data selector box will pop up. Check box all six rows of the `sample` table so that we launch multiple assembly jobs at the same time, one for each sample in the table. After selecting the rows, click the **OK** button on the lower right of the pop up box. This should return you to the workflow setup page which should now say that it will run on "6 selected samples" [sic].
+- "Step 1 — Select root entity type:" should be set to `cholera_sample`.
+- "Step 2 — **SELECT DATA**" — click on this button and a data selector box will pop up. Check box all 221 rows of the `cholera_sample` table so that we launch multiple assembly jobs at the same time, one for each sample in the table. In order to check all 221 rows, you will need to click the downward pointing black triangle next to the empty checkbox on the header row of the table. This will pull down a menu and you can select "All (221)" from the menu. This will return you to the sample selector table with all 221 rows filled in. After selecting the rows, click the **OK** button on the lower right of the pop up box. This should return you to the workflow setup page which should now say that it will run on "221 selected cholera_samples".
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/797820b2-1062-4d64-b662-752c8b09a5fc)
 
@@ -58,29 +58,32 @@ Make sure to set the following:
 
 
 - In the inputs table on the lower part of the page, the following required inputs will need to be set:
-  - `assemble_denovo.reads_unmapped_bams` (required) should be set to `this.cleaned_bam`
-  - `assemble_denovo.reference_genome_fasta` (required) should be set to `workspace.lasv_reference_scaffold_genomes`
-  - `assemble_denovo.trim_clip_db` (required) should be set to `workspace.trim_clip_db`
-  - `scaffold.min_unambig` should be set to `0.8`; this corresponds to the fraction of the genome that must be covered by unambiguous bases (i.e. not `N`s) for a successful assembly.
+  - `theiaprok_illumina_pe.read1_raw` (required) should be set to `this.read1`
+  - `theiaprok_illumina_pe.read2_raw` (required) should be set to `this.read2`
+  - `theiaprok_illumina_pe.samplename` (required) should be set to `this.cholera_sample_id`
+The following optional inputs are good to set to enable various species and strain typing tools:
+  - `theiaprok_illumina_pe.call_ani` should be set to `true` to enable ANI-based species identification.
+  - `theiaprok_illumina_pe.call_kmerfinder` should be set to `true` to enable kmerfinder-based species identification.
+  - `theiaprok_illumina_pe.call_resfinder` should be set to `true` to enable resfinder-based AMR calling.
 - Click the **SAVE** button after you've set all the inputs.
 
-The resulting workflow launch page should look like this when you are ready:
+The top resulting workflow launch page should look like this when you are ready:
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/255e2cca-f71a-4de9-b8b1-3a6df40ec951)
 
-TO DO -- optional parameters:
+If you scroll farther down the workflow parameters on the launch page, you should see these optional parameters filled in:
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ae5cbc11-a742-4706-bb9e-69e4f1c75a2e)
 
 Click the **RUN ANALYSIS** button, which should be dark blue if all required inputs are properly set. 
 
 Another modal dialog box will appear with an input box to enter a (human-readable) text description of the workflows jobs to be launched.
 This is a helpful field to describe distinct or distinguishing features of the jobs being submitted, 
-so jobs with various parameters or inputs subsets can be quickly located among other jobs that have been run.
+so jobs with various parameters or inputs subsets can be quickly located among other jobs that have been run. This is simply a note to your future self about what you did and can be changed later on.
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/a7440035-a721-4aac-bf9f-11b5792df647)
 
 Enter a description of your choosing, 
-such as "de novo assembly of LASV genomes from six samples, with min_unambig passing threshold set to 0.8"
+such as "de novo assembly and characterization of 221 bacterial samples"
 
 Click the **LAUNCH** button to start the compute jobs.
 
@@ -89,7 +92,7 @@ showing six rows in the bottom table corresponding to the six jobs that have bee
 
 ![image](https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/dd758c70-0dac-46e9-8d05-dd354f7fe298)
 
-No connectivity or power is required at the client side during this time; the jobs will continue to run on Terra if you navigate away from the page or shutdown your computer.
+No connectivity or power is required at the client side after this point; the jobs will continue to run on Terra if you navigate away from the page or shutdown your computer.
 
 The total runtime (real-world clock time) should be somewhat independent of whether you launched jobs on 1 or 1,000 samples, as the workflows are executed in parallel on separate cloud compute instances.
 
@@ -104,63 +107,46 @@ Additionally, you can also click on the **JOB HISTORY** tab at the top of your w
 When the `TheiaProk_Illumina_PE_PHB` workflow jobs have finished running, you can move on to evaluating the results.
 The job submission page for your submission under the Job History tab should look like this when the submissions are complete:
 
-<img width="80%" alt="image of job history" src="https://github.com/broadinstitute/viral-workshops/assets/53064/68eea307-7030-4cd2-8763-127f798e542f">
+<img width="1149" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ea0bdc91-f1de-442f-ae23-3cd3750b1ab1">
 
-Depending on some predictable and some unpredictable factors, the `TheiaProk_Illumina_PE_PHB` jobs should complete within <**TBD** minutes for input data of the sizes provided in this exercise.
+Depending on some predictable and some unpredictable factors, the `TheiaProk_Illumina_PE_PHB` jobs should complete within an hour for input data of the sizes provided in this exercise.
 
 ## Evaluating results
 
 You can examine the outputs and results of each step of each job via the Job History page, however, for large submissions, 
-it is easier to view the saved top level outputs in the data table—in this case, the `sample` table. 
+it is easier to view the saved top level outputs in the data table—in this case, the `cholera_sample` table. 
 
-After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a number of additional output columns,
-including assembly coverage plots for viewing read depth across the genome, `.fasta` sequence files, various intermediate output files, and metrics such as `assembly_length_unambiguous` and `mean_coverage`.
+After the `TheiaProk_Illumina_PE_PHB` jobs have completed, the `cholera_sample` table should have a a large number of additional output columns,
+including data files and reports, assembly metrics, and typing results.
 
-Among the many new columns, the following contain the outputs of the `assemble_denovo` workflow that are worth inspecting first:
- - `final_assembly_fasta` — contains sequence(s) assembled from the input reads (up to one per segment). The sequence(s) may contain ambiguous bases (`N`s) in regions of the genome lacking adequate read depth. All bases present represent coverage by actual reads and not bases imputed from references.
- - `aligned_bam` — contains reads mapped to the sequence of the final assembly ("mapped to self"), in [bam format](https://samtools.github.io/hts-specs/SAMv1.pdf).
- - `coverage_plot` - visualizes read depth as a function of genome location. Peaks indicate regions of high coverage; few reads mapped in regions with values near zero
- - `assembly_length` — the number of bases between the start and end position of the assembled sequence(s); this includes both known bases _and_ **ambiguous** bases (`N`s), and is not representative of the overall success of the assembly process
- - `assembly_length_unambiguous` — the number of distinct positions in the final assemgbly with unambigious bases (i.e. where the bases are known and not `N`). For a complete assembly, `assembly_length_unambiguous` will be close in value to the length of a known reference genome
- - `mean_coverage` — the number of reads mapped to the assembly, divided by the number of unambiguous bases
+Among the many new columns, the following contain the outputs of `TheiaProk_Illumina_PE_PHB` that are worth inspecting first:
+ - `gambit_predicted_taxon` - bacterial species prediction with the GAMBIT tool
+ - `ani_top_species_match`, `ani_output_tsv` - bacterial species prediction with the ANI tool
+ - `kmerfinder_top_hit` - bacterial species prediction via the kmerfinder tool
+ - `serotypefinder_serotype` - serotyping via the serotypefinder tool (generic for most bacteria)
+ - `srst2_vibrio_serogroup`, `srst2_vibrio_detailed_tsv` - serotyping via the srst2 tool (vibrio-specific)
+ - `amr_finderplus_virulence_genes` - AMR calling via AMR Finder Plus
+ - `resfinder_predicted_pheno_resistance` - AMR calling ia ResFinder
+ - `plasmid_finder_plasmids` - plasmid identification
+ - `clean_read_screen` - read screening results
+ - `num_reads_clean_pairs` - number of cleaned reads
+ - `number_contigs` - number of de novo contigs produced
+ - `prokka_gbf`, `prokka_gff`, `prokka_sqn` - Genbank submission files from the Prokka tool
 
-The metrics for the assemblies should be similar to those in the following table:
-
-| entity:de_novo_assembly_id | assembly_length | assembly_length_unambiguous | mean_coverage      |
-|----------------------------|-----------------|-----------------------------|--------------------|
-| LASV_NGA_2016_0409         | 9056            | 5292                        | 55.897968197879855 |
-| LASV_NGA_2016_0668         |                 |                             |                    |
-| LASV_NGA_2016_0759         | 10551           | 10428                       | 161.0294758790636  |
-| LASV_NGA_2016_0811         | 8334            | 2717                        | 1.8178545716342693 |
-| LASV_NGA_2016_1423         | 10588           | 10588                       | 3051.3962032489612 |
-| LASV_NGA_2016_1547         | 9289            | 5363                        | 5.262568629561847  |
-
-Near-complete assemblies were produced for two samples, LASV_NGA_2016_1423 and LASV_NGA_2016_0759. Two produced partial assemblies, LASV_NGA_2016_0409 and LASV_NGA_2016_1547.
-The remaining did not yield usable assemblies, though one, LASV_NGA_2016_0811, did have low-depth partial coverage across the genome.
-
-Plots illustrating coverage depth for the assemblies are now available in PDF files listed in the `coverage_plot` column, and included here for reference:
- - [LASV_NGA_2016_0409](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0409.ll2.coverage_plot.pdf)
- - [LASV_NGA_2016_0759](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0759.ll1.cleaned.downsampled.dedup.mapped.coverage_plot.pdf)
- - [LASV_NGA_2016_0811](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_0811.ll3.coverage_plot.pdf)
- - [LASV_NGA_2016_1423](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_1423.coverage_plot.pdf)
- - [LASV_NGA_2016_1547](https://github.com/broadinstitute/viral-workshops/blob/main/veme-ngs/de_novo_coverage_plots/LASV_NGA_2016_1547.ll4.coverage_plot.pdf)
-
-The two colors shown each plot correspond to the two segments of the LASV genome (L, and S, respectively).
-
-<img width="80%" alt="assembly coverage plot overview" src="https://github.com/broadinstitute/viral-workshops/assets/53064/2c10640a-7226-4f80-a769-e796d261361e" usemap="#image-map">
-
-### Inspecting results from this walkthrough
-
-Recall that when the `assemble_denovo` workflow was configured, the `min_unambig` parameter was set to `0.8`. 
-That value limits successful assemblies to those with ≥80% of bases known (i.e. not `N`).
-Lowering the `min_unambig` threshold will make the assembly process more permissive in the assemblies deemed "successful."
-
-Try lowering `min_unambig` based on the "failing" jobs observed during the first set of assembly jobs, and compare the resulting assemblies.
-
-
-The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
+OPTIONAL: if the number of columns is too much to look at, you can create saved "views" of your data tables that focus on a smaller number of columns of interest (such as the ones above). The columns shown or hidden for a data table can be configured by clicking the<img width="26" display="inline" style="top:0.4em;position:relative;" alt="column settings gear icon" src="https://github.com/broadinstitute/viral-workshops/assets/53064/d5123eb3-ccd3-4a9d-8a2a-4ef62ae9bd65">**SETTINGS** button above the table and selecting columns as desired.
 
 <img width="761" alt="column settings button" src="https://github.com/broadinstitute/viral-workshops/assets/53064/6bbb1bc7-17e5-447e-bd12-184a67f16504">
 
-<img width="822" alt="displayed column selector" src="https://github.com/broadinstitute/viral-workshops/assets/53064/355f570f-a9bf-4290-b09d-bbbb91ccbef2">
+<img width="779" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/ed9c9f55-ba05-4bb1-8860-280f118b4f3c">
 
+OPTIONAL: the Search box in the upper right of the data table view allows you to focus on certain rows that contain search patterns of interest. For example, enter `MOZ-` in the Search box to focus only on data originating from Mozambique. Or `O1` to focus on samples that were typed as _Vibrio cholerae_ O1.
+
+### Inspecting results from this walkthrough
+
+Scroll through the `cholera_samples` data table after TheiaProk completes and look for trends. Some possible questions to think about based on these results:
+1. How many of these specimens turned out to be cholera in the sequencing data?
+2. Does it vary by country (how much of each country's samples were cholera vs other bacteria)?
+3. Of the samples that were cholera by sequencing, how many typed as O1?
+4. Do quality metrics (e.g. screening pass/fail, other metrics) vary in any interesting way?
+5. Are any of the other columns (e.g. AMR/resistance columns) showing any interesting patterns or are they basically all the same?
+6. What genomic-informed questions can we not answer so far from this analysis?
