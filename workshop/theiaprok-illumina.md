@@ -141,6 +141,11 @@ If the number of columns is too much to look at, **you can create saved "views" 
 
 The Search box in the upper right of the data table view allows you to **focus on certain rows** that contain search patterns of interest. For example, enter `MOZ-` in the Search box to focus only on data originating from Mozambique. Or `O1` to focus on samples that were typed as _Vibrio cholerae_ O1.
 
+<img width="985" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/52359cca-a7ee-442a-8d36-0fd545dd7f40">
+
+<img width="951" alt="image" src="https://github.com/CholGen/CholGen-Workshop-2024/assets/8513746/b6d6fee1-4e01-4f24-aa2e-4a32f0cf3625">
+
+
 ### Inspecting results from this walkthrough
 
 Scroll through the `cholera_samples` data table after TheiaProk completes and look for trends. Some possible questions to think about based on these results:
