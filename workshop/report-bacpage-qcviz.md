@@ -57,6 +57,7 @@ Make sure to set the following:
   - `MultiQC.bamqc_data` (required) should be set to `this.cholera_samples.bamqc_data`
   - `MultiQC.busco_reports`  should be set to `this.cholera_samples.busco_report`
   - `MultiQC.fastqc_data` should be set to `this.cholera_samples.fastqc_data`
+  - `MultiQC.gambit_reports` should be set to `this.samples.gambit_report`
   - `MultiQC.quast_reports` should be set to `this.cholera_samples.quast_report`
   - `MultiQC.samtools_idxstats` should be set to `this.cholera_samples.samtools_idxstats`
   - `MultiQC.samtools_stats` should be set to `this.cholera_samples.samtools_stats`
