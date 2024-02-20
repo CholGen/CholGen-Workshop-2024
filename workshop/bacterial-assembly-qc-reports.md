@@ -22,10 +22,10 @@ This workflow has both required and optional inputs, and requires that the sampl
 The workflow will fail if the samples are selected invidually and not in a set. Please ensure this before moving forward with the inputs.
 
 *Required inputs*:
-`sample_ids`: A list of sample IDs for which the QC visualizations will be generated. To retrieve this from your workspace, use the format "this.{data_table}.{sample_name}". For example — if your data table was named "broad_demos" and your ids were named "sample_id", you'd want to pass in "this.broad_demos.sample_id"
-`workspace_name`: The name of the Terra workspace where the data resides.
-`workspace_project`: The name of the billing project associated with the workspace.
-`input_table_name`: The name of the Terra data table from which the input data is selected. This is not the table with sets — it is the original table where the data lives that the selected set is referencing.
+- `input_table_name`: The name of the Terra data table from which the input data is selected. This is not the table with sets — it is the original table where the data lives that the selected set is referencing.
+- `sample_ids`: A list of sample IDs for which the QC visualizations will be generated. To retrieve this from your workspace, use the format "this.{data_table}.{sample_name}". For example — if your data table was named "broad_demos" and your ids were named "sample_id", you'd want to pass in "this.broad_demos.sample_id"
+- `workspace_name`: The name of the Terra workspace where the data resides.
+- `workspace_project`: The name of the billing project associated with the workspace.
 
 *Optional inputs*:
 `grouping_column_name` (default "gambit_predicted_taxon"): The name of the column used for grouping/coloring in the visualizations, typically representing the predicted organism taxon.
