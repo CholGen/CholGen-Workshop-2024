@@ -55,7 +55,7 @@ analyses.
 Make sure to set the following:
 - The `bacpage-phylogeny` "Version:" should be already set to `master`, but make sure it is set as such.
 - "Run workflow(s) with inputs defined by data table" should be selected (not "file paths").
-- "Step 1 -- Select data table:" should be set to `sample_set`.
+- "Step 1 -- Select data table:" should be set to `cholera_sample_set`.
 - "Step 2 -- SELECT DATA" -- click on this button and a data selector box will pop up. At the top, make sure that 
   "Create a new sample_set from selected samples" is selected. We recommend selecting all samples that are  
   classified as `Vibrio cholerae` ("gambit_predicted_taxon" column), have coverage of at least 90% 
