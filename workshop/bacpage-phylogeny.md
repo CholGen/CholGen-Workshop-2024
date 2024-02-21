@@ -67,7 +67,7 @@ Make sure to set the following:
 - In the inputs table, we will need to populate the following required inputs:
   - `phylogeny_reconstruction.background_dataset` (required) should be set to `workspace.o1_background`
   - `phylogeny_reconstruction.consensus_sequences` (required) should be set to `this.cholera_samples.consensus_sequence`
-  - `phylogeny_reconstruction.recombinant_mask` should be set to `workspace.vc_mask`
+  - `phylogeny_reconstruction.mask` should be set to `workspace.vc_mask`
   - `phylogeny_reconstruction.outgroup` should be set to `"Asia|IDN|ERR025382|UNK|1957"` (Note: the quotes are required)
 - Click the SAVE button after you've set all the inputs. 
 
