@@ -24,8 +24,6 @@ The workflow will fail if the samples are selected invidually and not in a set. 
 *Required inputs*:
 - `input_table_name`: The name of the Terra data table from which the input data is selected. This is not the table with sets — it is the original table where the data lives that the selected set is referencing.
 - `sample_ids`: A list of sample IDs for which the QC visualizations will be generated. To retrieve this from your workspace, use the format "this.{sample_set entity column}.{sample_id}". For example — if your sample_set table was named "broad_demos_set", and the column that contains all of the samples in the set was called "broad_sample", and your ids in the data table where the data lives were named "sample_id", you'd want to pass in "this.broad_sample.sample_id"
-- `workspace_name`: The name of the Terra workspace where the data resides.
-- `workspace_project`: The name of the billing project associated with the workspace.
 
 *Optional inputs*:
 `grouping_column_name` (default "gambit_predicted_taxon"): The name of the column used for grouping/coloring in the visualizations, typically representing the predicted organism taxon.
