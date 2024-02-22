@@ -61,7 +61,9 @@ If you wish to override any of these thresholds or add a new treshold, you may d
 note that the upper and lower thresholds must be marked by `min` and `max`
 An example of a valid json file if we wanted to add metrics for Klevsiella and Shigella would look like:
 
+```
 { "est_coverage_clean": { "Klebsiella": 17, "Shigella": 17 }, "number_contigs": { "Klebsiella": 17, "Shigella": 17 }, "assembly_length": { "Klebsiella": { "min": 1500000, "max": 2500000 }, "Shigella": { "min": 1500000, "max": 2500000 } } }
+```
 
 Please not that this example json file does not contain real values and is only provided for reference.
 
